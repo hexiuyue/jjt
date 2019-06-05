@@ -1,5 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     repositories {
         google()
@@ -14,13 +13,12 @@ buildscript {
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
         // tinkersupport插件, 其中lastest.release指拉取最新版本，也可以指定明确版本号，例如1.0.4
         classpath "com.tencent.bugly:tinker-support:1.1.2"
-
         classpath "com.mob.sdk:MobSDK:+"
     }
     ext.compileSdkVersion=28
     ext.tinkerEnabled=true
     ext {
-        //是否是集成模式
+        //是否是集成模式 true集尘  false组合
         isModule = true
         moduleHome = true
         moduleAttention = true
