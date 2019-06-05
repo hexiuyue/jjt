@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    >
+    <!--android:background="@drawable/tushibg"-->
+
+    <TextView
+        android:id="@+id/toast_text"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:textColor="@color/white"
+        android:background="@mipmap/sign_in_prompt_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        />
+</LinearLayout>

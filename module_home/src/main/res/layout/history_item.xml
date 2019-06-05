@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="history"
+            type="com.guoshi.baselib.entity.History"></variable>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{history.content}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="14sp"
+            android:textColor="@color/hottextcolor"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="13dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+    </android.support.constraint.ConstraintLayout>
+</layout>

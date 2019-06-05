@@ -1,0 +1,4 @@
+#Mon Jun 03 17:03:16 CST 2019
+base.0=F\:\\Android studio demo\\jjt\\app\\build\\intermediates\\transforms\\r8\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

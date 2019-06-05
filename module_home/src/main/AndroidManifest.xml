@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.guoshi.module_home">
+
+    <application android:name="com.guoshi.baselib.Myaplication">
+        <activity android:name=".public_placement.PublicMainActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".private_placement.PrivateListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".public_placement.PublicListActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".seek.SeekActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".HomeTestActivity" />
+    </application>
+
+</manifest>

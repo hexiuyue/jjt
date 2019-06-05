@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                        
+    
+                 
+                       
+                                                             
+           
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:tag="layout/seek_item_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <RadioButton
+            android:id="@+id/hotRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:tag="binding_1"    
+            android:button="@null"
+            android:background="@null"
+            android:drawableRight="@mipmap/hot"
+            android:drawablePadding="5dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="13dp"
+            android:textSize="14sp"
+            android:textColor="@color/hottextcolor"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+         

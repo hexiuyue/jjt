@@ -1,0 +1,1 @@
+include ':app', ':module_home', ':baselib', ':MPChartLib', ':module_study', ':module_optional', ':module_mine', ':module_main'

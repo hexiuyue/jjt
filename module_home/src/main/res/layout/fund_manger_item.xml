@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="funmanger"
+            type="com.guoshi.baselib.entity.fund.FundManger" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        >
+
+        <ImageView
+            android:id="@+id/fundmimg"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            app:fundmangerimgs="@{funmanger.icon}"
+            />
+        <TextView
+            android:id="@+id/fundmname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{funmanger.managerName}"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@+id/fundmimg"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/viewgui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{funmanger.companyName+` `+funmanger.experience}"
+            android:textColor="@color/publicnamecolor"
+            android:layout_toRightOf="@+id/fundmimg"
+            android:layout_alignBottom="@+id/fundmimg"
+            android:layout_marginLeft="10dp"
+            android:textSize="14sp"
+            />
+        <ImageView
+            android:id="@+id/publicmangericon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/addicon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/publicnamecolor_view"
+            android:layout_below="@+id/viewgui"
+            android:layout_marginTop="10dp"
+            ></View>
+    </RelativeLayout>
+</layout>

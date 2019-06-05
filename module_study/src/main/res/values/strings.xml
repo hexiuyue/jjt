@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">module_attention</string>
+
+    <string name="study">学习</string>
+</resources>
