@@ -20,7 +20,7 @@ buildscript {
     ext.compileSdkVersion=28
     ext.tinkerEnabled=true
     ext {
-        //是否是集成模式c
+        //是否是集成模式
         isModule = true
         moduleHome = true
         moduleAttention = true
