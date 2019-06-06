@@ -97,14 +97,7 @@ public class FundProductFragment extends Fragment {
     private int totalPage;
     private void load(){
         if(pageIndex==1){
-            binding.ldl.showLoading("努力加载中",new LoadDataLayout.SetImgCallBack() {
-                @Override
-                public void setImg(ImageView img) {
-                    Glide.with(getActivity())
-                            .load(R.mipmap.loading)
-                            .into(img);
-                }
-            });
+            binding.ldl.showLoading("努力加载中");
         }
         String timestamp= BaseActivity.getTime();
         Map<String,Object> map=new HashMap<>();

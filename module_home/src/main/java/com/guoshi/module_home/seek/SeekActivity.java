@@ -414,14 +414,7 @@ public class SeekActivity extends BaseActivity implements View.OnClickListener {
     private void loadseek(){
         binding.ldl.setVisibility(View.VISIBLE);
         binding.resouview.setVisibility(View.GONE);
-        binding.ldl.showLoading("努力加载中...", new LoadDataLayout.SetImgCallBack() {
-            @Override
-            public void setImg(ImageView img) {
-                Glide.with(SeekActivity.this)
-                        .load(R.mipmap.loading)
-                        .into(img);
-            }
-        });
+        binding.ldl.showLoading("努力加载中...");
         String timestamp=BaseActivity.getTime();
         Map<String,Object> map=new HashMap<>();
         map.put("keyword",KEY);

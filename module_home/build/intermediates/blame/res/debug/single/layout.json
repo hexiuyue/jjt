@@ -20,28 +20,28 @@
         "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\c23a56520544578090c7b977f8178e1e\\res\\layout\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\6a98bc61b5a962de7a25eaa196602b99\\res\\layout\\support_simple_spinner_dropdown_item.xml"
-    },
-    {
         "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_fund_product.xml",
         "source": "F:\\Android studio demo\\jjt\\module_home\\src\\main\\res\\layout\\fragment_fund_product.xml"
+    },
+    {
+        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\6a98bc61b5a962de7a25eaa196602b99\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home_test.xml",
         "source": "F:\\Android studio demo\\jjt\\module_home\\src\\main\\res\\layout\\activity_home_test.xml"
     },
     {
-        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
-        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\d544f04169e3df36ed41b4bdf84b769a\\res\\layout\\design_navigation_item_header.xml"
+        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\c23a56520544578090c7b977f8178e1e\\res\\layout\\notification_template_big_media_narrow_custom.xml"
     },
     {
         "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
         "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\d544f04169e3df36ed41b4bdf84b769a\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
-        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow_custom.xml",
-        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\c23a56520544578090c7b977f8178e1e\\res\\layout\\notification_template_big_media_narrow_custom.xml"
+        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\d544f04169e3df36ed41b4bdf84b769a\\res\\layout\\design_navigation_item_header.xml"
     },
     {
         "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\seek_item.xml",
@@ -80,24 +80,24 @@
         "source": "F:\\Android studio demo\\jjt\\module_home\\src\\main\\res\\layout\\fragment_fund_company.xml"
     },
     {
-        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
-        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\d544f04169e3df36ed41b4bdf84b769a\\res\\layout\\design_bottom_sheet_dialog.xml"
-    },
-    {
         "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
         "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\6a98bc61b5a962de7a25eaa196602b99\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-2\\files-2.1\\d544f04169e3df36ed41b4bdf84b769a\\res\\layout\\design_bottom_sheet_dialog.xml"
     },
     {
         "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_all.xml",
         "source": "F:\\Android studio demo\\jjt\\module_home\\src\\main\\res\\layout\\fragment_all.xml"
     },
     {
-        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fund_manger_item.xml",
-        "source": "F:\\Android studio demo\\jjt\\module_home\\src\\main\\res\\layout\\fund_manger_item.xml"
-    },
-    {
         "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\layout_markview.xml",
         "source": "F:\\Android studio demo\\jjt\\baselib\\build\\intermediates\\packaged_res\\debug\\layout\\layout_markview.xml"
+    },
+    {
+        "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fund_manger_item.xml",
+        "source": "F:\\Android studio demo\\jjt\\module_home\\src\\main\\res\\layout\\fund_manger_item.xml"
     },
     {
         "merged": "F:\\Android studio demo\\jjt\\module_home\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",

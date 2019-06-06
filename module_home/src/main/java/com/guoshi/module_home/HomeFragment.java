@@ -30,13 +30,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             binding.wdln.setPadding(0, BaseActivity.getstatusbar(getActivity()),0,0);
         }
-
         initview();
         return binding.getRoot();
     }
 
 
     private void initview(){
+
         binding.homes.setOnClickListener(this);
         binding.cemetery.setOnClickListener(this);
         binding.privatePlacement.setOnClickListener(this);
@@ -47,14 +47,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.homes) {
-//            ARouter.getInstance()
-//                    .build(ModuleHomeUtlis.HOME_SEEK)
-//                    .withTransition(R.anim.slide_right_in, R.anim.slide_left_out)
-//                    .navigation();
             ARouter.getInstance()
-                    .build(BaseLibUtlis.WEBVIEW)
-                    .withTransition(R.anim.slide_right_in,R.anim.slide_left_out)
+                    .build(ModuleHomeUtlis.HOME_SEEK)
+                    .withTransition(R.anim.slide_right_in, R.anim.slide_left_out)
                     .navigation();
+//            ARouter.getInstance()
+//                    .build(BaseLibUtlis.WEBVIEW)
+//                    .withTransition(R.anim.slide_right_in,R.anim.slide_left_out)
+//                    .navigation();
         }else if(i==R.id.cemetery){
             ARouter.getInstance()
                     .build(ModuleHomeUtlis.PUBLIC_MAIN)
