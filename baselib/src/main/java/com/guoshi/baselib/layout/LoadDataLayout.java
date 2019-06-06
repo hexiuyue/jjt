@@ -9,6 +9,9 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,7 +58,6 @@ public class LoadDataLayout extends FrameLayout {
     private TextView loadingTv;
     private int loadingImgId;
     private String loadingString;
-
 
     public LoadDataLayout(Context context) {
         this(context, null);
@@ -114,6 +116,11 @@ public class LoadDataLayout extends FrameLayout {
 
         if (loadingLayoutId == R.layout.default_layout_loading) {//如果是自带的布局
             loadingImg = (ImageView) loadingView.findViewById(R.id.loading_img);
+//设置图片旋转动画
+            Animation animation= AnimationUtils.loadAnimation(context,R.anim.anim_circle_rotate);
+            LinearInterpolator interpolator=new LinearInterpolator();
+            animation.setInterpolator(interpolator);
+            loadingImg.startAnimation(animation);
             loadingTv = (TextView) loadingView.findViewById(R.id.loading_tv);
         }
         addView(loadingView, params);
@@ -137,6 +144,9 @@ public class LoadDataLayout extends FrameLayout {
      * @param callBack 设置图片回调接口
      */
     public void showEmpty(String s, SetImgCallBack callBack) {
+        if(loadingImgId == 0){
+            loadingImg.clearAnimation();
+        }
         if (bindView != null) {
             bindView.setVisibility(GONE);
         }
@@ -169,6 +179,9 @@ public class LoadDataLayout extends FrameLayout {
      * @param callBack 设置图片回调接口
      */
     public void showEmpty(String s,String KEY, SetImgCallBack callBack) {
+        if(loadingImgId == 0){
+            loadingImg.clearAnimation();
+        }
         if (bindView != null) {
             bindView.setVisibility(GONE);
         }
@@ -232,6 +245,9 @@ public class LoadDataLayout extends FrameLayout {
      * @param callBack
      */
     public void showError(String s, SetImgCallBack callBack) {
+        if(loadingImgId == 0){
+            loadingImg.clearAnimation();
+        }
         if (bindView != null) {
             bindView.setVisibility(GONE);
         }
@@ -289,7 +305,7 @@ public class LoadDataLayout extends FrameLayout {
      * @param s
      * @param callBack
      */
-    public void showLoading(String s, SetImgCallBack callBack) {
+    public void showLoading(String s, SetImgCallBack callBack,boolean istext) {
         if (bindView != null) {
             bindView.setVisibility(GONE);
         }
@@ -310,27 +326,31 @@ public class LoadDataLayout extends FrameLayout {
                 loadingImg.setVisibility(VISIBLE);
             }
 
-            if (loadingImgId == 0 && callBack == null){
+            if (loadingImgId == 0 && callBack == null && istext){
                 loadingImg.setVisibility(GONE);
             }
-
         }
         setGoneAll();
         loadingView.setVisibility(VISIBLE);
     }
 
     public void showLoading(String s) {
-        showLoading(s, null);
+        showLoading(s, null,false);
     }
 
     public void showLoading(SetImgCallBack callBack) {
-        showLoading(null,callBack);
+        showLoading(null,callBack,false);
     }
 
+    public void showLoading(String s,SetImgCallBack callBack) {
+        showLoading(s,callBack,false);
+    }
+    public void showLoading(String s,boolean istext) {
+        showLoading(s,null,istext);
+    }
     public void showLoading() {
-        showLoading(null,null);
+        showLoading(null,null,false);
     }
-
     public interface SetImgCallBack {
         void setImg(ImageView img);
     }
