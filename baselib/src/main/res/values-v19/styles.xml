@@ -8,6 +8,10 @@
         <!--去除点击水波-->
         <item name="android:selectableItemBackground">@null</item>
         <item name="android:selectableItemBackgroundBorderless">@null</item>
+        <!--去除APP启动白屏问题-->
+        <item name="android:windowBackground">@drawable/welcome_layler_drawable</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
 </resources>
