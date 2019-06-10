@@ -305,7 +305,7 @@ public class LoadDataLayout extends FrameLayout {
      * @param s
      * @param callBack
      */
-    public void showLoading(String s, SetImgCallBack callBack,boolean istext) {
+    public void showLoading(String s, SetImgCallBack callBack) {
         if (bindView != null) {
             bindView.setVisibility(GONE);
         }
@@ -326,8 +326,8 @@ public class LoadDataLayout extends FrameLayout {
                 loadingImg.setVisibility(VISIBLE);
             }
 
-            if (loadingImgId == 0 && callBack == null && istext){
-                loadingImg.setVisibility(GONE);
+            if (loadingImgId == 0 && callBack == null){
+//                loadingImg.setVisibility(GONE);
             }
         }
         setGoneAll();
@@ -335,21 +335,14 @@ public class LoadDataLayout extends FrameLayout {
     }
 
     public void showLoading(String s) {
-        showLoading(s, null,false);
+        showLoading(s, null);
     }
 
     public void showLoading(SetImgCallBack callBack) {
-        showLoading(null,callBack,false);
-    }
-
-    public void showLoading(String s,SetImgCallBack callBack) {
-        showLoading(s,callBack,false);
-    }
-    public void showLoading(String s,boolean istext) {
-        showLoading(s,null,istext);
+        showLoading(null,callBack);
     }
     public void showLoading() {
-        showLoading(null,null,false);
+        showLoading(null,null);
     }
     public interface SetImgCallBack {
         void setImg(ImageView img);
