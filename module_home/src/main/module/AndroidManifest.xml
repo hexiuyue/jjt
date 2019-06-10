@@ -11,15 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/TranslucentTheme">
 
-        <activity android:name=".HomeTestActivity"></activity>
-        <activity android:name=".seek.SeekActivity">
+        <activity android:name=".HomeTestActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".seek.SeekActivity" android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".public_placement.PublicMainActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".private_placement.PrivateListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".public_placement.PublicListActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
