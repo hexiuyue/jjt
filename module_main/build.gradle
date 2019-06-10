@@ -56,9 +56,16 @@ dependencies {
     annotationProcessor "com.alibaba:arouter-compiler:1.2.2"
     implementation project(':baselib')
     implementation project(':MPChartLib')
-
-    implementation project(':module_home')
-    implementation project(':module_study')
-    implementation project(':module_optional')
-    implementation project(':module_mine')
+    if(rootProject.ext.moduleHome){
+        implementation project(':module_home')
+    }
+    if(rootProject.ext.moduleStudy){
+        implementation project(':module_study')
+    }
+    if(rootProject.ext.moduleOptional){
+        implementation project(':module_optional')
+    }
+    if(rootProject.ext.moduleMine){
+        implementation project(':module_mine')
+    }
 }
