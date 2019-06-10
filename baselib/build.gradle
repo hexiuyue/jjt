@@ -120,8 +120,6 @@ dependencies {
     //粒子破碎效果
     api 'com.ifadai:particlesmasher:1.0.1'
 
-    //页面加载状态
-//    api 'com.zhengliang:LoadDdataLayout:1.0.1'
 
     
 }
