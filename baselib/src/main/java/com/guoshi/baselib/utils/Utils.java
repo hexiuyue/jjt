@@ -1,6 +1,11 @@
 package com.guoshi.baselib.utils;
 
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+
+import com.guoshi.baselib.R;
+import com.guoshi.baselib.view.MyBottomSheetDialog;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
 import cn.sharesdk.tencent.qq.QQ;
@@ -15,6 +20,18 @@ import cn.sharesdk.wechat.moments.WechatMoments;
  * 文件描述：
  */
 public class Utils {
+
+    public static void showShareDialog(Context context, View.OnClickListener onClickListener){
+        MyBottomSheetDialog bottomSheetDialog=new MyBottomSheetDialog(context, R.style.bottomdialog);
+        View view = LayoutInflater.from(context).inflate(R.layout.share_view, null, false);
+        view.findViewById(R.id.wx).setOnClickListener(onClickListener);
+        view.findViewById(R.id.wxp).setOnClickListener(onClickListener);
+        view.findViewById(R.id.qq).setOnClickListener(onClickListener);
+        view.findViewById(R.id.qqk).setOnClickListener(onClickListener);
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.show();
+    }
+
     public static void share(Context context, String title, String text, final String link_url,
                                 String img_url, String type) {// type 'wx' 就是发送到微信'wxp' 微信朋友圈
         OnekeyShare oks = new OnekeyShare();
