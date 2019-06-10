@@ -27,7 +27,12 @@ public class Myaplication extends Application {
     public void onCreate() {
         super.onCreate();
         instances=this;
-        initThirdService();
+        ARouter.openLog();     // 打印日志
+        ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        ARouter.init(instances); // 尽可能早，推荐在Application中初始化
+        CrashReport.initCrashReport(getApplicationContext(), "9cf7ad23d4", true);
+        setdatabase();
+        MobSDK.init(instances);
     }
 
     @Override
@@ -62,20 +67,5 @@ public class Myaplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(base);
-    }
-
-    public void initThirdService(){
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                ARouter.openLog();     // 打印日志
-                ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-                ARouter.init(instances); // 尽可能早，推荐在Application中初始化
-                CrashReport.initCrashReport(getApplicationContext(), "9cf7ad23d4", true);
-                setdatabase();
-                MobSDK.init(instances);
-            }
-        }.start();
     }
 }
