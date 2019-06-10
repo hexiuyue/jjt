@@ -26,12 +26,10 @@ import com.guoshi.baselib.entity.back.BackProducts;
 import com.guoshi.baselib.entity.fund.FundManger;
 import com.guoshi.baselib.entity.fund.Company;
 import com.guoshi.baselib.entity.fund.Placement;
-import com.guoshi.baselib.entity.module_home.Products;
 import com.guoshi.baselib.utils.SignUtil;
 import com.guoshi.baselib.view.CustomToast;
 import com.guoshi.module_home.R;
 import com.guoshi.baselib.entity.History;
-import com.guoshi.module_home.seek.SeekActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -265,12 +263,12 @@ public class MvvmCommonAdapter extends RecyclerView.Adapter<MvvmCommonAdapter.Co
             privateicon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//                    privateicon.toggle();
                     if(placement.getAddOptional()==1){//已加入自选
                         optional(placement.getFundId(),2,2);
                     }else{//未加入自选
                         optional(placement.getFundId(),1,2);
                     }
-
                 }
             });
         }

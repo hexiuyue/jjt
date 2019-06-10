@@ -1,17 +1,21 @@
 package com.guoshi.module_home;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.guoshi.baselib.base.BaseActivity;
 import com.guoshi.baselib.route.BaseLibUtlis;
 import com.guoshi.baselib.route.ModuleHomeUtlis;
 import com.guoshi.baselib.utils.Utils;
+import com.guoshi.baselib.view.MyBottomSheetDialog;
 import com.guoshi.module_home.databinding.FragmentHomeBinding;
 
 
@@ -61,11 +65,30 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     .withTransition(R.anim.slide_right_in, R.anim.slide_left_out)
                     .navigation();
         }else if(i==R.id.private_placement){
+            Utils.showShareDialog(getActivity(),this);
+        }else if(i==R.id.wx){
+            Utils.share(getActivity(),"分享title","分享内容",
+                    "https://www.baidu.com",
+                    "http://img.i-banmei.com/inviteShareShowPic.png",
+                    "wx");
+        }else if(i==R.id.wxp){
+            Utils.share(getActivity(),"分享title","分享内容",
+                    "https://www.baidu.com",
+                    "http://img.i-banmei.com/inviteShareShowPic.png",
+                    "wxp");
+        }else if(i==R.id.qq){
             Utils.share(getActivity(),"分享title","分享内容",
                     "https://www.baidu.com",
                     "http://img.i-banmei.com/inviteShareShowPic.png",
                     "qq");
+        }else if(i==R.id.qqk){
+            Utils.share(getActivity(),"分享title","分享内容",
+                    "https://www.baidu.com",
+                    "http://img.i-banmei.com/inviteShareShowPic.png",
+                    "qqk");
         }
     }
+
+
 }
 
