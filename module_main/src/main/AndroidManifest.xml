@@ -3,7 +3,9 @@
     package="com.guoshi.module_main">
 
     <application>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTask"
+            ></activity>
     </application>
 
 </manifest>
