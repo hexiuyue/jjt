@@ -7,15 +7,11 @@ apply plugin: 'com.mob.sdk'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-
-
-
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
@@ -23,16 +19,9 @@ android {
             }
         }
     }
-
-//    buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
-//    }
     sourceSets {
         main {
-            if (rootProject.ext.moduleNews) {
+            if (rootProject.ext.moduleOptional) {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java {
                     //排除java/debug文件夹下的所有文件
@@ -52,7 +41,6 @@ android {
         targetCompatibility 1.8
     }
 }
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible

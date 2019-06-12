@@ -15,21 +15,13 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
-
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi-v7a', "x86", 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
         // 设置MultiDex可用
         multiDexEnabled true
     }
-//    buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
-//    }
-
     greendao {
         schemaVersion 1
         daoPackage 'com.guoshi.baselib.db'
@@ -46,7 +38,6 @@ android {
 MobSDK {
     appKey "2b474dd20e5d8"
     appSecret "93cf7d53c37b100506506c8967e73ec3"
-
     ShareSDK {
         //平台配置信息
         devInfo {
@@ -72,10 +63,8 @@ MobSDK {
             }
         }
     }
-
 }
 dependencies {
-
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -84,7 +73,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api 'com.android.support:design:28.0.0'
-
     //阿里路由
     api 'com.alibaba:arouter-api:1.4.1'
     annotationProcessor "com.alibaba:arouter-compiler:1.2.2"
@@ -110,21 +98,12 @@ dependencies {
     api 'org.greenrobot:eventbus:3.0.0'
     //6.0M权限处理
     api 'com.yanzhenjie.permission:support:2.0.1'
-
     api 'com.android.support:multidex:1.0.0'
-
 //    //腾讯Bugly异常上报
     api 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
     api 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
-
     //粒子破碎效果
     api 'com.ifadai:particlesmasher:1.0.1'
-
-
-    
 }
 
-//configurations.all {
-//    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-//}
 

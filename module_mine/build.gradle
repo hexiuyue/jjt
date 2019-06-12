@@ -7,9 +7,6 @@ apply plugin: 'com.mob.sdk'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-
-
-
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -23,13 +20,6 @@ android {
             }
         }
     }
-
-//    buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
-//    }
     sourceSets {
         main {
             if (rootProject.ext.moduleMine) {
@@ -52,7 +42,6 @@ android {
         targetCompatibility 1.8
     }
 }
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     //noinspection GradleCompatible
@@ -62,7 +51,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     annotationProcessor "com.alibaba:arouter-compiler:1.2.2"
     implementation project(':baselib')
     implementation project(':MPChartLib')
