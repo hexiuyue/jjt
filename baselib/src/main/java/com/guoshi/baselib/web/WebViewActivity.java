@@ -44,20 +44,29 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         binding= DataBindingUtil.setContentView(this,R.layout.activity_web_view);
         initview();
     }
-    private String url="https://news.qq.com/";
+    private String url="https://view.inews.qq.com/w/WXN20190611002025020?refer=nwx&bat_id=1109043838&cur_pos=3&openid=o04IBANy6jAyshaGba8HVzXwOzDU&groupid=1560228624&msgid=3";
     private boolean isGoBack = false;
     private boolean isFirst = true;
     private ImageView iamgeView;
     private void initview(){
+        binding.webviewtop.findViewById(R.id.topviews).setVisibility(View.GONE);
         // 设置setWebChromeClient对象
         binding.webview.setWebChromeClient(new WebChromeClient(){
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
+                if(!isGoBack){//回退不显示进度条
+                    if(newProgress==100){
+                        binding.progressbar.setVisibility(View.GONE);//加载完网页进度条消失
+                    }
+                    else{
+                        binding.progressbar.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
+                        binding.progressbar.setProgress(newProgress);//设置进度值
+                    }
+                }
                 if (isFirst) {
                     return; //刚进入页面不需要模拟效果，app自己有
                 }
-                view.setVisibility(View.GONE);//先隐藏webview
                 if(newProgress==100){
                     //加载完毕，显示webview 隐藏imageview
                     view.setVisibility(View.VISIBLE);
@@ -95,7 +104,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
                                 isGoBack = false;
                             }
                         }
-
                         @Override
                         public void onAnimationEnd(Animation animation) {
 
@@ -104,9 +112,11 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
                         @Override
                         public void onAnimationRepeat(Animation animation) {
 
+
                         }
                     });
-                }else{
+                }else {
+                    view.setVisibility(View.GONE);//先隐藏webview
                     //url没加载好之前，隐藏webview，在主布局中，加入imageview显示当前页面快照
                     if(null==iamgeView){
                         iamgeView=new ImageView(WebViewActivity.this);
@@ -124,6 +134,7 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
             public void onReceivedTitle(WebView view, String title) {
                 super.onReceivedTitle(view, title);
                 ((TextView)binding.webviewtop.findViewById(R.id.alltext)).setText(title);
+
             }
         });
         binding.webview.addJavascriptInterface(new WebViewActivity.WebAppAndroid(this), "android");
@@ -179,7 +190,7 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         }
 
         @JavascriptInterface
-        public void showToast(String id) {
+        public void showToast(String id){
 
         }
     }
@@ -198,18 +209,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         }
         return false;
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        if (binding.webview.canGoBack()) {
-//            isGoBack = true;
-//            binding.webview.goBack(); //goBack()表示返回WebView的上一页面
-//        } else {
-//            this.finish();
-//            outacvivity(WebViewActivity.this);
-//        }
-//    }
-
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.baseback) {
