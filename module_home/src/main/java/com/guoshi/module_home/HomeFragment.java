@@ -10,24 +10,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.bumptech.glide.Glide;
 import com.guoshi.baselib.base.BaseActivity;
 import com.guoshi.baselib.route.BaseLibUtlis;
 import com.guoshi.baselib.route.ModuleHomeUtlis;
-import com.guoshi.baselib.utils.ScrollableViewRECUtil;
 import com.guoshi.baselib.utils.Utils;
-import com.guoshi.baselib.view.MyBottomSheetDialog;
 import com.guoshi.module_home.databinding.FragmentHomeBinding;
 
 import java.io.File;
@@ -106,29 +101,28 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     "http://img.i-banmei.com/inviteShareShowPic.png",
                     "qqk");
         }else if(i==R.id.bank_financing){
-//            Bitmap bitmap=getScrollViewBitmap(binding.wdln);
-//            saveBitmap(getActivity(),bitmap);
-//            Glide.with(getActivity())
-//                    .load(bitmap)
-//                    .into(binding.imgaa);
-            start();
+            Bitmap bitmap=shotScrollView(binding.wdln);
+            saveBitmap(getActivity(),bitmap);
         }
     }
-
-    private void start(){
-        final ScrollableViewRECUtil scrollableViewRECUtil=new ScrollableViewRECUtil(getActivity(),binding.lingsssss.getHeight(),binding.svback,ScrollableViewRECUtil.VERTICAL);
-        scrollableViewRECUtil.start(new ScrollableViewRECUtil.OnRecFinishedListener() {
-            @Override
-            public void onRecFinish(Bitmap bitmap) {
-                saveBitmap(getActivity(),bitmap);
-            }
-        });
+    public static Bitmap shotScrollView(ScrollView scrollView) {
+        int h = 0;
+        Bitmap bitmap = null;
+        for (int i = 0; i < scrollView.getChildCount(); i++) {
+            h += scrollView.getChildAt(i).getHeight();
+            scrollView.getChildAt(i).setBackgroundColor(Color.parseColor("#ffffff"));
+        }
+        Log.d("实际高度", "实际高度:" + h);
+        Log.d("实际高度", " 高度:" + scrollView.getHeight());
+        bitmap = Bitmap.createBitmap(scrollView.getWidth(), h, Bitmap.Config.ARGB_8888);
+        final Canvas canvas = new Canvas(bitmap);
+        canvas.drawColor(Color.WHITE);
+        scrollView.getChildAt(0).draw(canvas);
+        return bitmap;
     }
-
     private void saveBitmap(Context context, Bitmap bitmap){
         DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         String bitName=format.format(new Date())+".JPEG";
-
         final String fileName ;
         File file ;
         if(Build.BRAND .equals("Xiaomi") ){ // 小米手机
