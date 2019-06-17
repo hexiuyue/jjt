@@ -1,23 +1,42 @@
 package com.guoshi.module_home;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.RadioButton;
+import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bumptech.glide.Glide;
 import com.guoshi.baselib.base.BaseActivity;
 import com.guoshi.baselib.route.BaseLibUtlis;
 import com.guoshi.baselib.route.ModuleHomeUtlis;
+import com.guoshi.baselib.utils.ScrollableViewRECUtil;
 import com.guoshi.baselib.utils.Utils;
 import com.guoshi.baselib.view.MyBottomSheetDialog;
 import com.guoshi.module_home.databinding.FragmentHomeBinding;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 国时智能
@@ -38,12 +57,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return binding.getRoot();
     }
 
-
     private void initview(){
 
         binding.homes.setOnClickListener(this);
         binding.cemetery.setOnClickListener(this);
         binding.privatePlacement.setOnClickListener(this);
+        binding.bankFinancing.setOnClickListener(this);
     }
 
 
@@ -51,14 +70,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.homes) {
-            ARouter.getInstance()
-                    .build(ModuleHomeUtlis.HOME_SEEK)
-                    .withTransition(R.anim.slide_right_in, R.anim.slide_left_out)
-                    .navigation();
 //            ARouter.getInstance()
-//                    .build(BaseLibUtlis.WEBVIEW)
-//                    .withTransition(R.anim.slide_right_in,R.anim.slide_left_out)
+//                    .build(ModuleHomeUtlis.HOME_SEEK)
+//                    .withTransition(R.anim.slide_right_in, R.anim.slide_left_out)
 //                    .navigation();
+            ARouter.getInstance()
+                    .build(BaseLibUtlis.WEBVIEW)
+                    .withTransition(R.anim.slide_right_in,R.anim.slide_left_out)
+                    .navigation();
         }else if(i==R.id.cemetery){
             ARouter.getInstance()
                     .build(ModuleHomeUtlis.PUBLIC_MAIN)
@@ -86,9 +105,66 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     "https://www.baidu.com",
                     "http://img.i-banmei.com/inviteShareShowPic.png",
                     "qqk");
+        }else if(i==R.id.bank_financing){
+//            Bitmap bitmap=getScrollViewBitmap(binding.wdln);
+//            saveBitmap(getActivity(),bitmap);
+//            Glide.with(getActivity())
+//                    .load(bitmap)
+//                    .into(binding.imgaa);
+            start();
         }
     }
 
+    private void start(){
+        final ScrollableViewRECUtil scrollableViewRECUtil=new ScrollableViewRECUtil(getActivity(),binding.lingsssss.getHeight(),binding.svback,ScrollableViewRECUtil.VERTICAL);
+        scrollableViewRECUtil.start(new ScrollableViewRECUtil.OnRecFinishedListener() {
+            @Override
+            public void onRecFinish(Bitmap bitmap) {
+                saveBitmap(getActivity(),bitmap);
+            }
+        });
+    }
+
+    private void saveBitmap(Context context, Bitmap bitmap){
+        DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        String bitName=format.format(new Date())+".JPEG";
+
+        final String fileName ;
+        File file ;
+        if(Build.BRAND .equals("Xiaomi") ){ // 小米手机
+            fileName = Environment.getExternalStorageDirectory().getPath()+"/DCIM/"+bitName ;
+        }else{  // Meizu 、Oppo
+            fileName = Environment.getExternalStorageDirectory().getPath()+"/DCIM/"+bitName ;
+        }
+        file = new File(fileName);
+
+        if(file.exists()){
+            file.delete();
+        }
+        FileOutputStream out;
+        try{
+            out = new FileOutputStream(file);
+            // 格式为 JPEG，照相机拍出的图片为JPEG格式的，PNG格式的不能显示在相册中
+            if(bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out))
+            {
+                out.flush();
+                out.close();
+                // 插入图库
+                MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), bitName, null);
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        // 发送广播，通知刷新图库的显示
+        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
+        Toast.makeText(context, "图片保存图库成功", Toast.LENGTH_LONG).show();
+    }
 
 }
 
