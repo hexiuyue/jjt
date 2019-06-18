@@ -101,64 +101,66 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     "http://img.i-banmei.com/inviteShareShowPic.png",
                     "qqk");
         }else if(i==R.id.bank_financing){
-            Bitmap bitmap=shotScrollView(binding.wdln);
-            saveBitmap(getActivity(),bitmap);
+//            Bitmap bitmap=shotScrollView(binding.wdln);
+//            saveBitmap(getActivity(),bitmap);
         }
     }
-    public static Bitmap shotScrollView(ScrollView scrollView) {
-        int h = 0;
-        Bitmap bitmap = null;
-        for (int i = 0; i < scrollView.getChildCount(); i++) {
-            h += scrollView.getChildAt(i).getHeight();
-            scrollView.getChildAt(i).setBackgroundColor(Color.parseColor("#ffffff"));
-        }
-        Log.d("实际高度", "实际高度:" + h);
-        Log.d("实际高度", " 高度:" + scrollView.getHeight());
-        bitmap = Bitmap.createBitmap(scrollView.getWidth(), h, Bitmap.Config.ARGB_8888);
-        final Canvas canvas = new Canvas(bitmap);
-        canvas.drawColor(Color.WHITE);
-        scrollView.getChildAt(0).draw(canvas);
-        return bitmap;
-    }
-    private void saveBitmap(Context context, Bitmap bitmap){
-        DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-        String bitName=format.format(new Date())+".JPEG";
-        final String fileName ;
-        File file ;
-        if(Build.BRAND .equals("Xiaomi") ){ // 小米手机
-            fileName = Environment.getExternalStorageDirectory().getPath()+"/DCIM/"+bitName ;
-        }else{  // Meizu 、Oppo
-            fileName = Environment.getExternalStorageDirectory().getPath()+"/DCIM/"+bitName ;
-        }
-        file = new File(fileName);
-
-        if(file.exists()){
-            file.delete();
-        }
-        FileOutputStream out;
-        try{
-            out = new FileOutputStream(file);
-            // 格式为 JPEG，照相机拍出的图片为JPEG格式的，PNG格式的不能显示在相册中
-            if(bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out))
-            {
-                out.flush();
-                out.close();
-                // 插入图库
-                MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), bitName, null);
-            }
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        // 发送广播，通知刷新图库的显示
-        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
-        Toast.makeText(context, "图片保存图库成功", Toast.LENGTH_LONG).show();
-    }
+//    public static Bitmap shotScrollView(ScrollView scrollView) {
+//        int h = 0;
+//        Bitmap bitmap = null;
+//        for (int i = 0; i < scrollView.getChildCount(); i++) {
+//            h += scrollView.getChildAt(i).getHeight();
+//            scrollView.getChildAt(i).setBackgroundColor(Color.parseColor("#ffffff"));
+//        }
+//        Log.d("实际高度", "实际高度:" + h);
+//        Log.d("实际高度", " 高度:" + scrollView.getHeight());
+//        bitmap = Bitmap.createBitmap(scrollView.getWidth(), h, Bitmap.Config.ARGB_8888);
+//        final Canvas canvas = new Canvas(bitmap);
+//        canvas.drawColor(Color.WHITE);
+//        scrollView.getChildAt(0).draw(canvas);
+//        return bitmap;
+//    }
+//    private void saveBitmap(Context context, Bitmap bitmap){
+//        DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+//        String bitName=format.format(new Date())+".JPEG";
+//        final String fileName ;
+//        File file ;
+//        if(Build.BRAND .equals("Xiaomi") ){ // 小米手机
+//            fileName = Environment.getExternalStorageDirectory().getPath()+"/DCIM/"+bitName ;
+//        }else{  // Meizu 、Oppo
+//            fileName = Environment.getExternalStorageDirectory().getPath()+"/DCIM/"+bitName ;
+//        }
+//        file = new File(fileName);
+//
+//        if(file.exists()){
+//            file.delete();
+//        }
+//        FileOutputStream out;
+//        try{
+//            out = new FileOutputStream(file);
+//            // 格式为 JPEG，照相机拍出的图片为JPEG格式的，PNG格式的不能显示在相册中
+//            if(bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out))
+//            {
+//                out.flush();
+//                out.close();
+//
+//
+//                // 插入图库
+//                MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), bitName, null);
+//            }
+//        }
+//        catch (FileNotFoundException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        catch (IOException e)
+//        {
+//            e.printStackTrace();
+//        }
+//        // 发送广播，通知刷新图库的显示
+//        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
+//        Toast.makeText(context, "图片保存图库成功", Toast.LENGTH_LONG).show();
+//    }
 
 }
 
