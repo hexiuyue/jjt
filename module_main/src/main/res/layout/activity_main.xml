@@ -14,9 +14,7 @@
             android:layout_height="match_parent"
             android:overScrollMode="never"
             >
-
         </com.guoshi.baselib.view.CustomViewPager>
-
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="match_parent"
