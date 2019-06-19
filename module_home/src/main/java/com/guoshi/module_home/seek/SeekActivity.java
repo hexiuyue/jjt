@@ -132,7 +132,6 @@ public class SeekActivity extends BaseActivity implements View.OnClickListener {
                 }else{
                     binding.ldl.setVisibility(View.GONE);
                     binding.resouview.setVisibility(View.VISIBLE);
-
                 }
                 return false;
             }
@@ -231,7 +230,10 @@ public class SeekActivity extends BaseActivity implements View.OnClickListener {
             }
             if(products.getPublicFunds().size()<5){
                 binding.intopubliclist.setVisibility(View.GONE);
+            }else{
+                binding.intopubliclist.setVisibility(View.VISIBLE);
             }
+            binding.ldlpublic.showSuccess();
         }else{
             binding.ldlpublic.showEmpty("抱歉，未找到与“" + KEY + "”相关的公募产品",
                     KEY,null);
@@ -265,7 +267,10 @@ public class SeekActivity extends BaseActivity implements View.OnClickListener {
             }
             if(products.getPrivateFunds().size()<5){
                 binding.intoprivatelist.setVisibility(View.GONE);
+            }else{
+                binding.intoprivatelist.setVisibility(View.VISIBLE);
             }
+            binding.ldlprivate.showSuccess();
         }else{
             binding.ldlprivate.showEmpty("抱歉，未找到与“" + KEY + "”相关的私募产品",
                     KEY,null);
@@ -287,7 +292,10 @@ public class SeekActivity extends BaseActivity implements View.OnClickListener {
             }
             if(products.getBankProducts().size()<5){
                 binding.bankgengduo.setVisibility(View.GONE);
+            }else{
+                binding.bankgengduo.setVisibility(View.VISIBLE);
             }
+            binding.ldlbank.showSuccess();
         }else{
             binding.ldlbank.showEmpty("抱歉，未找到与“" + KEY + "”相关的银行产品",
                     KEY,null);

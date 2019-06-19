@@ -65,14 +65,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.homes) {
-//            ARouter.getInstance()
-//                    .build(ModuleHomeUtlis.HOME_SEEK)
-//                    .withTransition(R.anim.slide_right_in, R.anim.slide_left_out)
-//                    .navigation();
             ARouter.getInstance()
-                    .build(BaseLibUtlis.WEBVIEW)
-                    .withTransition(R.anim.slide_right_in,R.anim.slide_left_out)
+                    .build(ModuleHomeUtlis.HOME_SEEK)
+                    .withTransition(R.anim.slide_right_in, R.anim.slide_left_out)
                     .navigation();
+//            ARouter.getInstance()
+//                    .build(BaseLibUtlis.WEBVIEW)
+//                    .withTransition(R.anim.slide_right_in,R.anim.slide_left_out)
+//                    .navigation();
         }else if(i==R.id.cemetery){
             ARouter.getInstance()
                     .build(ModuleHomeUtlis.PUBLIC_MAIN)

@@ -109,6 +109,7 @@ public class AllFragment extends BaseFragment implements View.OnClickListener {
             }else{
                 publicMvvmCommonAdapter.setKET(KEY);
             }
+            binding.ldlporduct.showSuccess();
         }else{
             binding.ldlporduct.showEmpty("抱歉，未找到与“" + KEY + "”相关的基金产品。",KEY,null);
             binding.porduct.setVisibility(View.GONE);
@@ -129,6 +130,7 @@ public class AllFragment extends BaseFragment implements View.OnClickListener {
             }else{
                 fundcompanyMvvmCommonAdapter.setKET(KEY);
             }
+            binding.ldlcompany.showSuccess();
         }else{
             binding.ldlcompany.showEmpty("抱歉，未找到与“" + KEY + "”相关的基金公司。",KEY,null);
             binding.company.setVisibility(View.GONE);
@@ -149,6 +151,7 @@ public class AllFragment extends BaseFragment implements View.OnClickListener {
             }else{
                 fundMangersMvvmCommonAdapter.setKET(KEY);
             }
+            binding.ldlmanger.showSuccess();
         }else{
             binding.ldlmanger.showEmpty("抱歉，未找到与“" + KEY + "”相关的基金经理。",KEY,null);
             binding.fundmanger.setVisibility(View.INVISIBLE);
