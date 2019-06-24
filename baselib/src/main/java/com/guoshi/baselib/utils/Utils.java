@@ -1,11 +1,33 @@
 package com.guoshi.baselib.utils;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.guoshi.baselib.R;
 import com.guoshi.baselib.view.MyBottomSheetDialog;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
 import cn.sharesdk.tencent.qq.QQ;
@@ -54,5 +76,80 @@ public class Utils {
             oks.setPlatform(QZone.NAME);
         }
         oks.show(context);
+    }
+
+    public static void saveBitmap(Context context, Bitmap bitmap){
+        DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        String bitName=format.format(new Date())+".JPEG";
+        final String fileName ;
+        File file ;
+        if(Build.BRAND .equals("Xiaomi") ){ // 小米手机
+            fileName = Environment.getExternalStorageDirectory().getPath()+"/DCIM/"+bitName ;
+        }else{  // Meizu 、Oppo
+            fileName = Environment.getExternalStorageDirectory().getPath()+"/DCIM/"+bitName ;
+        }
+        file = new File(fileName);
+
+        if(file.exists()){
+            file.delete();
+        }
+        FileOutputStream out;
+        try{
+            out = new FileOutputStream(file);
+            // 格式为 JPEG，照相机拍出的图片为JPEG格式的，PNG格式的不能显示在相册中
+            if(bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out))
+            {
+                out.flush();
+                out.close();
+
+
+                // 插入图库
+                MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), bitName, null);
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        // 发送广播，通知刷新图库的显示
+        context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
+        Toast.makeText(context, "图片保存图库成功", Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * 判断当前是否有网络
+     *
+     * @param context Activity的this
+     * @return
+     */
+    public static boolean CheckNetwork(final Context context) {
+        boolean flag = false;
+        ConnectivityManager cwjManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cwjManager.getActiveNetworkInfo() != null)
+            flag = cwjManager.getActiveNetworkInfo().isAvailable();
+        if (!flag) {
+            AlertDialog.Builder b = new AlertDialog.Builder(context).setTitle("警告").setMessage("当前没有可用的网络！是否需要设置查找可用网络！");
+            b.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    Intent mIntent = new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
+                    context.startActivity(mIntent);
+                }
+            }).setNeutralButton("取消", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    dialog.cancel();
+                }
+            }).create();
+            b.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                public void onCancel(DialogInterface dialog) {
+//                    ((Activity)context).finish();
+                }
+            });
+            b.show();
+        }
+        return flag;
     }
 }
