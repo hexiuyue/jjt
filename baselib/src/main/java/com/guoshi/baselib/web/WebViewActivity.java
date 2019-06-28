@@ -57,11 +57,11 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
                 super.onProgressChanged(view, newProgress);
                 if(!isGoBack){//回退不显示进度条
                     if(newProgress==100){
-                        binding.progressbar.setVisibility(View.GONE);//加载完网页进度条消失
+                        binding.progressBar.setVisibility(View.GONE);//加载完网页进度条消失
                     }
                     else{
-                        binding.progressbar.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
-                        binding.progressbar.setProgress(newProgress);//设置进度值
+                        binding.progressBar.setVisibility(View.VISIBLE);//开始加载网页时显示进度条
+                        binding.progressBar.setProgress(newProgress);//设置进度值
                     }
                 }
                 if (isFirst) {
